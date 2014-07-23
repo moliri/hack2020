@@ -15,7 +15,7 @@ function createMap(currentPosition) {
 	var marker = new google.maps.Marker({
       	position: pos,
       	map: map,
-      	title: 'Your location'
+      	title: 'Your Location'
   	});
 	
 }
