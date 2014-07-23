@@ -10,7 +10,7 @@ function createMap(currentPosition) {
 		zoom: 14
 	};
 
-	var mapCanvas = $("#map-canvas");
+	var mapCanvas = $("#map-canvas")[0];
 	console.log(mapCanvas);
 	var map = new google.maps.Map(mapCanvas, mapOptions);
 	console.log("test");
