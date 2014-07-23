@@ -1,41 +1,44 @@
 var map = null; //makes map global
+var pos = null;
 var business_markers = [];
-var HOTELS = ["Hilton",
-	"Marriott",
-	"Omni Hotels",
-	"Wyndham Hotels",
-	"Days Inn",
-	"Super 8",
-	"Trevelodge",
-	"Holiday Inn",
-	"Motel 6",
-	"Westin",
-	"Best Western"
-];
-var DEPARTMENT_STORES = ["Sears",
-	"Lowe’s",
-	"The Home Depot",
-	"Macy’s",
-	"Walmart",
-	"Bath and Body Works",
-	"Kmart",
-	"Office Depot"
-];
-var OFFICE_SUPPLIES = [
-	"Best Buy",
-	"Staples",
-	"Office Depot",
-	"Office Max",
-	"Apple"
+var BUSINESSES = {
+	"hotels": ["Hilton",
+		"Marriott",
+		"Omni Hotels",
+		"Wyndham Hotels",
+		"Days Inn",
+		"Super 8",
+		"Trevelodge",
+		"Holiday Inn",
+		"Motel 6",
+		"Westin",
+		"Best Western"
+	],
+	"department stores": ["Sears",
+		"Lowe’s",
+		"The Home Depot",
+		"Macy’s",
+		"Walmart",
+		"Bath and Body Works",
+		"Kmart",
+		"Office Depot"
+	],
+	"office_supplies": [
+		"Best Buy",
+		"Staples",
+		"Office Depot",
+		"Office Max",
+		"Apple"
 
-]
+	]
+}
 
 function initialize() {
 	navigator.geolocation.getCurrentPosition(createMap);
 }
 
-function createMap(currentPosition) {
-	var pos = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude);
+function createMap(p) {
+	pos = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
 	var mapOptions = {
 		center: pos,
@@ -51,7 +54,7 @@ function createMap(currentPosition) {
 		title: 'Your Location'
 	});
 
-	searchStores(currentPosition);
+	searchStores();
 }
 
 /* starting script for intro page */
@@ -64,25 +67,8 @@ function start() {
 	return false;
 }
 
-function searchStores(currentPosition) {
-	var pos = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude);
-
-	//var searchCriteria = prompt("Search stores in your area")
-	var type = HOTELS;
-	for (var i = 0; i < type.length; i++) {
-		var name = type[i];
-
-		var request = {
-			location: pos,
-			radius: 10000,
-			name: name
-		};
-
-		if (map != null) {
-			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch(request, find);
-		}
-	}
+function searchStores() {
+	switchToCategory("department stores");
 }
 
 function find(results, status) {
@@ -105,3 +91,33 @@ function createMarker(place) {
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+$(document).on('category_switch', function(e) {
+	var type = e.type;
+	switchToCategory(type);
+})
+
+function switchToCategory(category) {
+	// clear exisiting business markers
+	for (var i = 0; i < business_markers.length; i++) {
+		business_markers.setMap(null);
+	}
+	business_markers = [];
+
+	// add markers for new category
+	var list = BUSINESSES[category];
+	for (var i = 0; i < list.length; i++) {
+		var name = list[i];
+
+		var request = {
+			location: pos,
+			radius: 10000,
+			name: name
+		};
+
+		if (map != null) {
+			var service = new google.maps.places.PlacesService(map);
+			service.nearbySearch(request, find);
+		}
+	}
+}
