@@ -3,7 +3,7 @@ function initialize() {
 }
 
 function createMap(currentPosition) {
-	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	var pos = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude);
 
 	var mapOptions = {
 		center: pos
