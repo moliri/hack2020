@@ -13,9 +13,7 @@ function createMap(currentPosition) {
 	};
 
 	var mapCanvas = $("#map-canvas")[0];
-	console.log(mapCanvas);
 	map = new google.maps.Map(mapCanvas, mapOptions);
-	console.log("test");
 	
 	var marker = new google.maps.Marker({
       	position: pos,
