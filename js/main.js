@@ -1,5 +1,5 @@
 var map = null; //makes map global
-
+var business_markers = [];
 var HOTELS = ["Hilton",
 	"Marriott",
 	"Omni Hotels",
@@ -100,6 +100,7 @@ function createMarker(place) {
 		map: map,
 		position: place.geometry.location
 	});
+	business_markers.push(marker);
 }
 
 
