@@ -1,5 +1,6 @@
 var map = null; //makes map global
 var pos = null;
+var radius = null;
 var business_markers = [];
 var BUSINESSES = {
 	"hotels": ["Hilton",
@@ -67,6 +68,15 @@ function start() {
 	return false;
 }
 
+function calculateRadius() {
+	var bounds = new google.maps.LatLngBounds();
+	var sw = bounds.getSouthWest(); 
+	var ne = bounds.getNorthEast();
+
+	var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween (sw, ne);
+	radius = proximitymeter;
+}
+
 function searchStores() {
 	switchToCategory("department stores");
 }
@@ -111,7 +121,7 @@ function switchToCategory(category) {
 
 		var request = {
 			location: pos,
-			radius: 10000,
+			radius: calculateRadius(),
 			name: name
 		};
 
