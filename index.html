@@ -1,15 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 
 <head>
-	<link rel="stylesheet" type="text/css" href="./styles.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OneStopShop</title>
+	
+	<!-- Bootstrap Core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery/jQuery Mobile/jQuery Mobile CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+	
+	<!-- Google APIs -->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXfPben6GxSeCpmnXbZKg_HZz9w0vhSsQ">
 	</script>
-	<script type="text/javascript" src="./main.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Local Files -->
+	<link href="css/OneStopShop.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	
 </head>
 
 <body>
-	<div id="map-canvas" class="map-canvas"></div>
+	<!-- Intro Page -->
+    <div data-role="page" id="intropage" class="intro"> 
+        <div data-role="content" class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="brand-heading">One Stop Shop</h2>
+                        <p class="intro-text">The Employee Store</p>
+						<a href="" class="btn btn-info" id="startBtn" >Start</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+	
+	
+	
+	<!-- Search Page -->
+	<div data-role="page" id="search" class="search">
+		<h1> oh hai </h1>
+	</div>
+	
+	<!-- Maps Page -->
+	<div data-role="page" id="maps" class="maps">
+		<div id="map-canvas" class="map-canvas"></div>
+	</div>
 </body>
 
 </html>
