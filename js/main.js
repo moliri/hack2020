@@ -46,7 +46,7 @@ function searchStores(currentPosition) {
 	};
 	
 	if(map != null) {
-		var service = new google.maps.places.PlacesService();
+		var service = new google.maps.places.PlacesService(map);
 	}
 	
 	service.nearbySearch(request, find);
