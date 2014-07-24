@@ -144,17 +144,17 @@ function createMarker(place) {
 
 	google.maps.event.addListener(marker, 'click', (function() {
 		infowindow.close();
-
+		var imgStr = (place.photos ? '<img src="' + place.photos[0].getUrl({
+			maxWidth: 200,
+			maxHeight: 200
+		}) + '"></img>' : "");
 		infowindow.setOptions({
 			content: '<div id="content">' +
 				'<div id="siteNotice">' +
 				'</div>' +
 				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
 				'<h5>' + place.vicinity + '</h5>' +
-				'<img src="' + place.photos[0].getUrl({
-					maxWidth: 200,
-					maxHeight: 200
-				}) + '"></img>' +
+				imgStr +
 				'</div>' +
 				'</div>'
 		});
