@@ -41,6 +41,9 @@ h5 {
 	opacity: 1.0;
 }
 
+
+/* Intro Page */
+
 #h2 {
     margin: 0 0 18px;
     text-transform: uppercase;
@@ -52,11 +55,27 @@ h5 {
     text-shadow: 0 0 10px #000;
 }
 
-/* Intro Page */
 #introSubText {
 	font-style: italic;
 	font-family: Segoe UI;
 	text-shadow: 0 0 10px #000;
+}
+
+#startBtn{
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 800;
+	border: 1px solid #ff831c;
+    color: #ffffff;
+    background-color: #ff831c;
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;	
 }
 
 
@@ -481,24 +500,6 @@ a:focus {
     
 }
 
-
-
-#startbtn{
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 800;
-	border: 1px solid #ff831c;
-    color: #ffffff;
-    background-color: #ff831c;
-    -webkit-animation-name: pulse;
-    -moz-animation-name: pulse;
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;	
-}
 
 .btn-default {
     border: 1px solid #ff831c;
