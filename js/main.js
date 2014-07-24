@@ -67,8 +67,6 @@ function createMap(p) {
 
 		radius = proximitymeter;
 	});
-
-	searchStores();
 }
 
 /* starting script for intro page */
@@ -79,13 +77,6 @@ $(document).on('pageinit', '#intropage', function() {
 function start() {
 	$.mobile.changePage('#maps');
 	return false;
-}
-
-
-
-
-function searchStores() {
-	switchToCategory("hotels");
 }
 
 function find(results, status) {
@@ -159,10 +150,10 @@ function switchToCategory(category) {
 /**
  * Assign events to buttons
  */
-$(document).ready(function onReady(){
-	$(".category").click(function onClick(){
+$(document).ready(function onReady() {
+	$(".category").click(function onClick() {
 		console.log($(this));
-		var category = $(this).attr("id", function(i, category){
+		var category = $(this).attr("id", function(i, category) {
 			console.log(category);
 			switchToCategory(category);
 		})
