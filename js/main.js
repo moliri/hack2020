@@ -69,7 +69,7 @@ function start() {
 }
 
 function calculateRadius() {
-	var bounds = new google.maps.LatLngBounds();
+	var bounds = map.getBounds();
 	var sw = bounds.getSouthWest(); 
 	var ne = bounds.getNorthEast();
 
