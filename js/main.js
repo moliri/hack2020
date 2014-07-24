@@ -50,9 +50,7 @@ function createMap(p) {
 	map = new google.maps.Map(mapCanvas, mapOptions);
 
 	var marker = new google.maps.Marker({
-		var pinColor = "FE7569";
-    		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-		icon: pinImage,
+		icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
 		position: pos,
 		map: map,
 		title: 'Your Location'
