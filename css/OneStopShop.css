@@ -68,14 +68,14 @@ h5 {
 	border: 1px solid #ff831c;
     color: #ffffff;
     background-color: #ff831c;
-    -webkit-animation-name: pulse;
+/*     -webkit-animation-name: pulse;
     -moz-animation-name: pulse;
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;	
+    -moz-animation-timing-function: linear;	 */
 }
 
 
