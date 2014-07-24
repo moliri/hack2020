@@ -90,7 +90,7 @@ function find(results, status) {
 	console.log(status);
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		for (var i = 0; i < results.length; i++) {
-			(createMarker.bind(this.category))(results[i]);
+			(createMarker.bind({category: this.category, name: this.name}))(results[i]);
 		}
 	} else if (status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 		setTimeout(function() {
@@ -102,11 +102,11 @@ function find(results, status) {
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	var icon = null;
-	if (this == "hotels") {
+	if (this.category == "hotels") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
-	} else if (this == "department-stores") {
+	} else if (this.category == "department-stores") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-	} else if (this == "office-supplies") {
+	} else if (this.category == "office-supplies") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
 	}
 	var marker = new google.maps.Marker({
@@ -114,6 +114,11 @@ function createMarker(place) {
 		position: place.geometry.location,
 		icon: icon
 	});
+	
+	google.maps.event.addListener(map, 'click', function() {
+		marker.openInfoWindowHtml(this.name);
+	}
+	
 	business_markers.push(marker);
 }
 
@@ -149,7 +154,8 @@ function switchToCategory(category) {
 			service.nearbySearch(request, find.bind({
 				service: service,
 				request: request,
-				category: category
+				category: category,
+				name: name
 			}));
 		}
 	}
