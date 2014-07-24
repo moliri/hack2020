@@ -628,7 +628,7 @@ body {
 
 /* Adjust the width of the left reveal menu. */
 .ui-panel {
-    width: 10em;
+    width: 25em;
 }
 .ui-panel-closed {
     width: 0;
@@ -655,7 +655,7 @@ body {
 
 /* panel list font size change */
 ul.panelList li a{
-     font-size: 0.9em;
+     font-size: 0.75em;
 }
 
 #loading {
