@@ -53,14 +53,31 @@
 	
 	
 	
-	<!-- Search Page -->
-	<div data-role="page" id="search" class="search">
+	<!-- Test Page -->
+	<div data-role="page" id="test" class="test">
 		<h1> oh hai </h1>
 	</div>
 	
 	<!-- Maps Page -->
 	<div data-role="page" id="maps" class="maps">
-		<div id="map-canvas" class="map-canvas"></div>
+		
+		<div data-role="panel" id="introPanel1" data-theme="a">
+            <ul data-role="listview" class="panelList">
+                 <li style="white-space: normal !important"><a href="#search">Hotels</a></li>
+                 <li style="white-space: normal !important"><a href="" id="favList">Department Stores</a></li>
+                 <li style="white-space: normal !important"><a href="#about">Office Supplies</a></li>
+                 <li style="white-space: normal !important"><a href="#contact">About Us</a></li>
+            </ul>
+        </div>
+		
+		<div data-role="header" id="mapsHead">
+            <a href="#introPanel1" data-iconpos="notext" data-icon="search">Search</a>
+            <h1> ONESTOP GO </h1>
+        </div>
+		
+		<div data-role="content" id="mapsContent">
+			<div id="map-canvas" class="map-canvas"></div>
+		</div>
 	</div>
 </body>
 
