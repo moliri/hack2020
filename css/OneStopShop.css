@@ -46,7 +46,7 @@ h5 {
 
 #h2 {
     margin: 0 0 18px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
@@ -83,13 +83,17 @@ h5 {
 
 #mapsContent {
     width: 100%;
-    height: 200px;
-    margin-top: 100px;
+    height: 2000px;
 }
 
 #mapsHead{
     color: #47D1D1;
     background-color: #fff;
+}
+
+#h1 {
+	color: #ff831c;
+	text-transform: lowercase;
 }
 
 
@@ -422,11 +426,6 @@ a:focus {
 	}
 
     .pantry {
-    }
-
-    #map {
-        height: 400px;
-        margin-top: 250px;
     }
 }
 
