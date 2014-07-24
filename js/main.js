@@ -55,6 +55,18 @@ function createMap(p) {
 		title: 'Your Location'
 	});
 
+	google.maps.event.addListener(map, 'bounds_changed', function(event) {
+		console.log("bounds chagned")
+		var bounds = map.getBounds();
+
+		var ne = bounds.getNorthEast();
+		var sw = bounds.getSouthWest();
+
+		var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween(sw, ne);
+
+		radius = proximitymeter;
+	});
+
 	searchStores();
 }
 
@@ -68,21 +80,11 @@ function start() {
 	return false;
 }
 
-function calculateRadius() {
-	google.maps.event.addListener(map, 'idle', function(event) {
-            var bounds = map.getBounds();
 
-            var ne = bounds.getNorthEast();
-            var sw = bounds.getSouthWest();
-            
-	    var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween (sw, ne);
-	    
-	    return proximitymeter;
-	}
-}
+
 
 function searchStores() {
-	switchToCategory("department stores");
+	switchToCategory("hotels");
 }
 
 function find(results, status) {
@@ -123,9 +125,10 @@ function switchToCategory(category) {
 	for (var i = 0; i < list.length; i++) {
 		var name = list[i];
 
+		console.log(radius);
 		var request = {
 			location: pos,
-			radius: calculateRadius(),
+			radius: radius,
 			name: name
 		};
 
