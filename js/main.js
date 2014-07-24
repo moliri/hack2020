@@ -93,7 +93,10 @@ function find(results, status) {
 	console.log(status);
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		for (var i = 0; i < results.length; i++) {
-			(createMarker.bind({category: this.category, name: this.name}))(results[i]);
+			(createMarker.bind({
+				category: this.category,
+				name: this.name
+			}))(results[i]);
 		}
 	} else if (status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 		setTimeout(function() {
@@ -117,11 +120,20 @@ function createMarker(place) {
 		position: place.geometry.location,
 		icon: icon
 	});
-	
-	google.maps.event.addListener(map, 'click', function() {
-		marker.openInfoWindowHtml(this.name);
-	}
-	
+
+	google.maps.event.addListener(marker, 'click', (function() {
+		var infowindow = new google.maps.InfoWindow({
+			content: '<div id="content">' +
+				'<div id="siteNotice">' +
+				'</div>' +
+				'<h3 id="firstHeading" class="firstHeading">' + this.name + '</h3>' +
+				'</div>' +
+				'</div>'
+		});
+
+		infowindow.open(map, marker);
+	}).bind(this));
+
 	business_markers.push(marker);
 }
 
