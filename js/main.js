@@ -23,15 +23,14 @@ var BUSINESSES = {
 		"Walmart",
 		"Bath and Body Works",
 		"Kmart",
-		"Office Depot",
-		"clothing_store"
+		"Office Depot"
 	],
 	"office-supplies": [
 		"Best Buy",
 		"Staples",
 		"Office Depot",
+		"Office Max",
 		"Apple"
-
 	]
 }
 
@@ -42,7 +41,8 @@ var TYPES = {
 	],
 	"department-stores": [
 		"store",
-		"department_store"
+		"department_store",
+		"clothing_store"
 	],
 	"office-supplies": [
 		"store",
@@ -130,6 +130,7 @@ function find(results, status) {
 }
 
 function createMarker(place) {
+	if (place.name.indexOf(this.name) < 0) return;
 	var placeLoc = place.geometry.location;
 	var icon = null;
 	if (this.category == "lodging") {
