@@ -15,7 +15,7 @@ var BUSINESSES = {
 		"Westin",
 		"Best Western"
 	],
-	"department stores": ["Sears",
+	"department-stores": ["Sears",
 		"Lowe’s",
 		"The Home Depot",
 		"Macy’s",
@@ -24,7 +24,7 @@ var BUSINESSES = {
 		"Kmart",
 		"Office Depot"
 	],
-	"office_supplies": [
+	"office-supplies": [
 		"Best Buy",
 		"Staples",
 		"Office Depot",
@@ -155,3 +155,16 @@ function switchToCategory(category) {
 		}
 	}
 }
+
+/**
+ * Assign events to buttons
+ */
+$(document).ready(function onReady(){
+	$(".category").click(function onClick(){
+		console.log($(this));
+		var category = $(this).attr("id", function(i, category){
+			console.log(category);
+			switchToCategory(category);
+		})
+	});
+})
