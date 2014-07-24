@@ -58,6 +58,9 @@ function createMap(p) {
 		title: 'Your Location'
 	});
 
+	// display start buton
+	$("#startBtn").show();
+
 	google.maps.event.addListener(map, 'bounds_changed', function(event) {
 		console.log("bounds chagned")
 		var bounds = map.getBounds();
