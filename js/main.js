@@ -69,16 +69,11 @@ function createMap(p) {
 
 		radius = proximitymeter;
 	});
-<<<<<<< HEAD
-	
+
 	google.maps.event.addListener(map, 'center_changed', function(event) {
 		console.log("center changed")
 		mapCenter = map.getCenter();
-	}
-
-	searchStores();
-=======
->>>>>>> cded5f4e5cd93932c846e67b6cbd5dfc78f3f143
+	});
 }
 
 /* starting script for intro page */
@@ -95,7 +90,7 @@ function find(results, status) {
 	console.log(status);
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		for (var i = 0; i < results.length; i++) {
-			createMarker(results[i]).bind(this.category);
+			(createMarker.bind(this.category))(results[i]);
 		}
 	} else if (status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 		setTimeout(function() {
@@ -106,17 +101,18 @@ function find(results, status) {
 
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
+	var icon = null;
+	if (this == "hotels") {
+		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+	} else if (this == "department-stores") {
+		icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+	} else if (this == "office-supplies") {
+		icon = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+	}
 	var marker = new google.maps.Marker({
 		map: map,
-		position: place.geometry.location
-		
-		if (this == "hotels") {
-			icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
-		} else if (this == "department stores") {
-			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-		} else if (this == "office supplies") {
-			icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
-		}
+		position: place.geometry.location,
+		icon: icon
 	});
 	business_markers.push(marker);
 }
