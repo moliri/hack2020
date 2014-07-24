@@ -148,6 +148,7 @@ function createMarker(place) {
 
 	google.maps.event.addListener(marker, 'click', (function() {
 		infowindow.close();
+
 		infowindow.setOptions({
 			content: '<div id="content">' +
 				'<div id="siteNotice">' +
@@ -155,8 +156,10 @@ function createMarker(place) {
 				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
 				'<h5>' + place.open_now + '</h5>' +
 				'<h5>' + place.vicinity + '</h5>' +
-				//'<img src= + https://maps.googleapis.com/maps/api/place/photo?photoreference=' + place.photo_reference +
-				//	'&sensor=false&maxheight=' + 300 + '&maxwidth=' + 500 + '&key=AIzaSyAXfPben6GxSeCpmnXbZKg_HZz9w0vhSsQ</img>' +
+				'<img src="' + place.photos[0].getUrl({
+					maxWidth: 200,
+					maxHeight: 200
+				}) + '"></img>' +
 				'</div>' +
 				'</div>'
 		});
