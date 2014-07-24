@@ -69,7 +69,7 @@ function start() {
 }
 
 function calculateRadius() {
-	var bounds = map.getBounds();
+	var bounds = map.LatLngBounds();
 	var sw = bounds.getSouthWest(); 
 	var ne = bounds.getNorthEast();
 
