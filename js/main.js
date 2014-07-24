@@ -74,7 +74,7 @@ function calculateRadius() {
 	var ne = bounds.getNorthEast();
 
 	var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween (sw, ne);
-	return = proximitymeter;
+	return proximitymeter;
 }
 
 function searchStores() {
