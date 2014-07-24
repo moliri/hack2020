@@ -23,13 +23,13 @@ var BUSINESSES = {
 		"Walmart",
 		"Bath and Body Works",
 		"Kmart",
-		"Office Depot"
+		"Office Depot",
+		"clothing_store"
 	],
 	"office-supplies": [
 		"Best Buy",
 		"Staples",
 		"Office Depot",
-		"Office Max",
 		"Apple"
 
 	]
@@ -40,11 +40,13 @@ var TYPES = {
 	"lodging": [
 		"lodging"
 	],
-	"department-stores":[
-		"store"
+	"department-stores": [
+		"store",
+		"department_store"
 	],
 	"office-supplies": [
-		"store"
+		"store",
+		"electronics_store"
 	]
 }
 var infowindow = new google.maps.InfoWindow();
