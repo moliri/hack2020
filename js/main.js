@@ -1,6 +1,6 @@
 var map = null; //makes map global
 var pos = null;
-var radius = null;
+var radius = 3200;
 var business_markers = [];
 var BUSINESSES = {
 	"hotels": ["Hilton",
@@ -69,12 +69,16 @@ function start() {
 }
 
 function calculateRadius() {
-	var bounds = map.LatLngBounds();
-	var sw = bounds.getSouthWest(); 
-	var ne = bounds.getNorthEast();
+	google.maps.event.addListener(map, 'idle', function(event) {
+            var bounds = map.getBounds();
 
-	var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween (sw, ne);
-	return proximitymeter;
+            var ne = bounds.getNorthEast();
+            var sw = bounds.getSouthWest();
+            
+	    var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween (sw, ne);
+	    
+	    return proximitymeter;
+	}
 }
 
 function searchStores() {
