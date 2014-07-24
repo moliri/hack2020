@@ -110,7 +110,7 @@ $(document).on('category_switch', function(e) {
 function switchToCategory(category) {
 	// clear exisiting business markers
 	for (var i = 0; i < business_markers.length; i++) {
-		business_markers.setMap(null);
+		business_markers[i].setMap(null);
 	}
 	business_markers = [];
 
