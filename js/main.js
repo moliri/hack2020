@@ -153,7 +153,9 @@ function createMarker(place) {
 				'<div id="siteNotice">' +
 				'</div>' +
 				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
+				'<h5>' + place.open_now + '</h5>' +
 				'<h5>' + place.vicinity + '</h5>' +
+				'<img src=' + place.photos + '</img>' +
 				'</div>' +
 				'</div>'
 		});
