@@ -87,9 +87,12 @@ $(document).on('pageinit', '#intropage', function() {
 
 function start() {
 	$.mobile.changePage('#maps');
-	setTimeout(initialize, 200);
 	return false;
 }
+
+$(document).on('pageinit', '#maps', function(){
+	initialize();
+})
 
 function find(results, status) {
 	console.log(status);
@@ -193,11 +196,9 @@ $(document).ready(function onReady() {
 });
 
 function hideLoadingIcon() {
-	console.log("hide loading icon");
 	$("#loading").hide();
 }
 
 function showLoadingIcon() {
-	console.log("show loading icon");
 	$("#loading").show(0);
 }
