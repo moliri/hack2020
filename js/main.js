@@ -66,7 +66,6 @@ function createMap(p) {
 	};
 
 	var mapCanvas = $("#map-canvas")[0];
-	console.log($("#map-canvas").css("height"));
 	map = new google.maps.Map(mapCanvas, mapOptions);
 
 	var marker = new google.maps.Marker({
@@ -77,7 +76,6 @@ function createMap(p) {
 	});
 
 	google.maps.event.addListener(map, 'bounds_changed', function(event) {
-		console.log("bounds chagned")
 		var bounds = map.getBounds();
 
 		var ne = bounds.getNorthEast();
@@ -89,7 +87,6 @@ function createMap(p) {
 	});
 
 	google.maps.event.addListener(map, 'center_changed', function(event) {
-		console.log("center changed")
 		mapCenter = map.getCenter();
 	});
 
@@ -111,7 +108,6 @@ $(document).on('pageinit', '#maps', function() {
 })
 
 function find(results, status) {
-	console.log(status);
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		for (var i = 0; i < results.length; i++) {
 			(createMarker.bind({
@@ -154,7 +150,6 @@ function createMarker(place) {
 				'<div id="siteNotice">' +
 				'</div>' +
 				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
-				'<h5>' + place.open_now + '</h5>' +
 				'<h5>' + place.vicinity + '</h5>' +
 				'<img src="' + place.photos[0].getUrl({
 					maxWidth: 200,
@@ -215,7 +210,6 @@ function switchToCategory(category) {
 $(document).ready(function onReady() {
 	$(".category").click(function onClick() {
 		var category = $(this).attr("id", function(i, category) {
-			console.log(category);
 			switchToCategory(category);
 		});
 	});
