@@ -4,7 +4,7 @@ var radius = 3200;
 var mapCenter = null;
 var business_markers = [];
 var BUSINESSES = {
-	"hotels": ["Hilton",
+	"lodging": ["Hilton",
 		"Marriott",
 		"Omni Hotels",
 		"Wyndham Hotels",
@@ -23,17 +23,33 @@ var BUSINESSES = {
 		"Walmart",
 		"Bath and Body Works",
 		"Kmart",
-		"Office Depot"
+		"Office Depot",
+		"clothing_store"
 	],
 	"office-supplies": [
 		"Best Buy",
 		"Staples",
 		"Office Depot",
-		"Office Max",
 		"Apple"
 
 	]
 }
+
+/* https://developers.google.com/places/documentation/supported_types */
+var TYPES = {
+	"lodging": [
+		"lodging"
+	],
+	"department-stores": [
+		"store",
+		"department_store"
+	],
+	"office-supplies": [
+		"store",
+		"electronics_store"
+	]
+}
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
 	showLoadingIcon();
@@ -90,7 +106,7 @@ function start() {
 	return false;
 }
 
-$(document).on('pageinit', '#maps', function(){
+$(document).on('pageinit', '#maps', function() {
 	initialize();
 })
 
@@ -116,7 +132,7 @@ function find(results, status) {
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	var icon = null;
-	if (this.category == "hotels") {
+	if (this.category == "lodging") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
 	} else if (this.category == "department-stores") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -130,11 +146,13 @@ function createMarker(place) {
 	});
 
 	google.maps.event.addListener(marker, 'click', (function() {
-		var infowindow = new google.maps.InfoWindow({
+		infowindow.close();
+		infowindow.setOptions({
 			content: '<div id="content">' +
 				'<div id="siteNotice">' +
 				'</div>' +
-				'<h3 id="firstHeading" class="firstHeading">' + this.name + '</h3>' +
+				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
+				'<h5>' + place.vicinity + '</h5>' +
 				'</div>' +
 				'</div>'
 		});
@@ -167,7 +185,8 @@ function switchToCategory(category) {
 		var request = {
 			location: mapCenter,
 			radius: radius,
-			name: name
+			name: name,
+			types: TYPES[category]
 		};
 
 		if (map != null) {
