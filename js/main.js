@@ -69,6 +69,7 @@ function createMap(p) {
 
 		radius = proximitymeter;
 	});
+<<<<<<< HEAD
 	
 	google.maps.event.addListener(map, 'center_changed', function(event) {
 		console.log("center changed")
@@ -76,6 +77,8 @@ function createMap(p) {
 	}
 
 	searchStores();
+=======
+>>>>>>> cded5f4e5cd93932c846e67b6cbd5dfc78f3f143
 }
 
 /* starting script for intro page */
@@ -86,13 +89,6 @@ $(document).on('pageinit', '#intropage', function() {
 function start() {
 	$.mobile.changePage('#maps');
 	return false;
-}
-
-
-
-
-function searchStores() {
-	switchToCategory("hotels");
 }
 
 function find(results, status) {
@@ -166,10 +162,10 @@ function switchToCategory(category) {
 /**
  * Assign events to buttons
  */
-$(document).ready(function onReady(){
-	$(".category").click(function onClick(){
+$(document).ready(function onReady() {
+	$(".category").click(function onClick() {
 		console.log($(this));
-		var category = $(this).attr("id", function(i, category){
+		var category = $(this).attr("id", function(i, category) {
 			console.log(category);
 			switchToCategory(category);
 		})
