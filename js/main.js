@@ -155,7 +155,8 @@ function createMarker(place) {
 				'<h5 id="firstHeading" class="firstHeading">' + place.name + '</h5>' +
 				'<h5>' + place.open_now + '</h5>' +
 				'<h5>' + place.vicinity + '</h5>' +
-				'<img src=' + place.photos + '</img>' +
+				'<img src= + https://maps.googleapis.com/maps/api/place/photo?photoreference=' + place.photos.photo_reference +
+					'&sensor=false&maxheight=' + 300 + '&maxwidth=' + 500 + '&key=AIzaSyAXfPben6GxSeCpmnXbZKg_HZz9w0vhSsQ</img>' +
 				'</div>' +
 				'</div>'
 		});
