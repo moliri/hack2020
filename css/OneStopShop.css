@@ -657,3 +657,15 @@ body {
 ul.panelList li a{
      font-size: 0.9em;
 }
+
+#loading {
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+}
