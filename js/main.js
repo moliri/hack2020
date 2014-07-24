@@ -49,6 +49,7 @@ function createMap(p) {
 	};
 
 	var mapCanvas = $("#map-canvas")[0];
+	console.log($("#map-canvas").css("height"));
 	map = new google.maps.Map(mapCanvas, mapOptions);
 
 	var marker = new google.maps.Marker({
@@ -83,7 +84,7 @@ $(document).on('pageinit', '#intropage', function() {
 
 function start() {
 	$.mobile.changePage('#maps');
-	initialize();
+	setTimeout(initialize, 200);
 	return false;
 }
 

@@ -236,10 +236,6 @@ a:focus {
     border: 0px;
 }
 
-.ui-mobile {
-    min-height: 500px;
-}
-
 #userID {
 	font-size: 14px;
 }
