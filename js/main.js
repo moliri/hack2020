@@ -98,10 +98,13 @@ function find(results, status) {
 				name: this.name
 			}))(results[i]);
 		}
+		this.done();
 	} else if (status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 		setTimeout(function() {
 			this.service.nearbySearch(this.request, find.bind(this))
 		}.bind(this), 1000);
+	} else {
+		this.done();
 	}
 }
 
@@ -154,10 +157,10 @@ function switchToCategory(category) {
 
 	// add markers for new category
 	var list = BUSINESSES[category];
+	var done = _.after(list.length, hideLoadingIcon);
 	for (var i = 0; i < list.length; i++) {
 		var name = list[i];
 
-		console.log(radius);
 		var request = {
 			location: mapCenter,
 			radius: radius,
@@ -170,7 +173,8 @@ function switchToCategory(category) {
 				service: service,
 				request: request,
 				category: category,
-				name: name
+				name: name,
+				done: done
 			}));
 		}
 	}
@@ -181,10 +185,17 @@ function switchToCategory(category) {
  */
 $(document).ready(function onReady() {
 	$(".category").click(function onClick() {
-		console.log($(this));
 		var category = $(this).attr("id", function(i, category) {
 			console.log(category);
 			switchToCategory(category);
 		})
 	});
-})
+});
+
+function hideLoadingIcon() {
+	console.log("hide loading icon");
+}
+
+function showLoadingIcon() {
+	console.log("show loading icon");
+}
