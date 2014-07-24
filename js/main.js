@@ -93,6 +93,10 @@ function find(results, status) {
 		for (var i = 0; i < results.length; i++) {
 			createMarker(results[i]);
 		}
+	} else if (status == google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
+		setTimeout(function() {
+			this.service.nearbySearch(this.request, find.bind(this))
+		}.bind(this), 1000);
 	}
 }
 
@@ -134,7 +138,10 @@ function switchToCategory(category) {
 
 		if (map != null) {
 			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch(request, find);
+			service.nearbySearch(request, find.bind({
+				service: service,
+				request: request
+			}));
 		}
 	}
 }
