@@ -100,8 +100,7 @@ function find(results, status) {
 		for (var i = 0; i < results.length; i++) {
 			(createMarker.bind({
 				category: this.category,
-				name: this.name,
-				placeID: this.placeID
+				name: this.name
 			}))(results[i]);
 		}
 		this.done();
@@ -115,7 +114,7 @@ function find(results, status) {
 }
 
 function createMarker(place) {
-	/*var placeLoc = place.geometry.location;
+	var placeLoc = place.geometry.location;
 	var icon = null;
 	if (this.category == "hotels") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
@@ -128,46 +127,20 @@ function createMarker(place) {
 		map: map,
 		position: place.geometry.location,
 		icon: icon
-	});*/
-	var request = {
-		placeID: this.placeID;
-	}
-	
-	var infowindow = new google.maps.InfoWindow();
-	
-	service = new google.maps.places.PlacesService(map);
-	
-	var icon = null;
-	if (this.category == "hotels") {
-		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
-	} else if (this.category == "department-stores") {
-		icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-	} else if (this.category == "office-supplies") {
-		icon = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
-	}
-	
-	service.getDetails(request, function(place, status) {
-    	if (status == google.maps.places.PlacesServiceStatus.OK) {
-    		var marker = new google.maps.Marker({
-    			map: map,
-        		position: place.geometry.location
-        		icon: icon;
-        	});
-	
-			google.maps.event.addListener(marker, 'click', (function() {
-				var infowindow = new google.maps.InfoWindow({
-					content: '<div id="content">' +
-						'<div id="siteNotice">' +
-						'</div>' +
-						'<h3 id="firstHeading" class="firstHeading">' + place.name + " "
-							+ place.formatted_address + " " + place.opening_hours+ " " + place.icon '</h3>' +
-						'</div>' +
-						'</div>'
-				});
-				infowindow.open(map, marker);
-			});
-		 }	
-		}).bind(this));
+	});
+
+	google.maps.event.addListener(marker, 'click', (function() {
+		var infowindow = new google.maps.InfoWindow({
+			content: '<div id="content">' +
+				'<div id="siteNotice">' +
+				'</div>' +
+				'<h3 id="firstHeading" class="firstHeading">' + this.name + '</h3>' +
+				'</div>' +
+				'</div>'
+		});
+
+		infowindow.open(map, marker);
+	}).bind(this));
 
 	business_markers.push(marker);
 }
@@ -204,8 +177,7 @@ function switchToCategory(category) {
 				request: request,
 				category: category,
 				name: name,
-				done: done,
-				placeID: service.place_id
+				done: done
 			}));
 		}
 	}
