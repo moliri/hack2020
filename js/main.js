@@ -58,9 +58,6 @@ function createMap(p) {
 		title: 'Your Location'
 	});
 
-	// display start buton
-	$("#startBtn").show();
-
 	google.maps.event.addListener(map, 'bounds_changed', function(event) {
 		console.log("bounds chagned")
 		var bounds = map.getBounds();
@@ -86,6 +83,7 @@ $(document).on('pageinit', '#intropage', function() {
 
 function start() {
 	$.mobile.changePage('#maps');
+	initialize();
 	return false;
 }
 
@@ -140,9 +138,6 @@ function createMarker(place) {
 	business_markers.push(marker);
 }
 
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
 $(document).on('category_switch', function(e) {
 	var type = e.type;
 	switchToCategory(type);
@@ -188,7 +183,7 @@ $(document).ready(function onReady() {
 		var category = $(this).attr("id", function(i, category) {
 			console.log(category);
 			switchToCategory(category);
-		})
+		});
 	});
 });
 

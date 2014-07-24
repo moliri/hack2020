@@ -69,7 +69,7 @@ h5 {
 	border: 1px solid #ff831c;
     color: #ffffff;
     background-color: #ff831c;
-    display: none;
+/*    display: none;*/
 /*     -webkit-animation-name: pulse;
     -moz-animation-name: pulse;
     -webkit-animation-duration: 2s;
@@ -234,6 +234,10 @@ a:focus {
     width: 100%;
     height: 100%;
     border: 0px;
+}
+
+.ui-mobile {
+    min-height: 500px;
 }
 
 #userID {
