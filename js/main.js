@@ -4,7 +4,7 @@ var radius = 3200;
 var mapCenter = null;
 var business_markers = [];
 var BUSINESSES = {
-	"hotels": ["Hilton",
+	"lodging": ["Hilton",
 		"Marriott",
 		"Omni Hotels",
 		"Wyndham Hotels",
@@ -32,6 +32,19 @@ var BUSINESSES = {
 		"Office Max",
 		"Apple"
 
+	]
+}
+
+/* https://developers.google.com/places/documentation/supported_types */
+var TYPES = {
+	"lodging": [
+		"lodging"
+	],
+	"department-stores":[
+		"store"
+	],
+	"office-supplies": [
+		"store"
 	]
 }
 var infowindow = new google.maps.InfoWindow();
@@ -117,7 +130,7 @@ function find(results, status) {
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	var icon = null;
-	if (this.category == "hotels") {
+	if (this.category == "lodging") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
 	} else if (this.category == "department-stores") {
 		icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
@@ -170,7 +183,8 @@ function switchToCategory(category) {
 		var request = {
 			location: mapCenter,
 			radius: radius,
-			name: name
+			name: name,
+			types: TYPES[category]
 		};
 
 		if (map != null) {
