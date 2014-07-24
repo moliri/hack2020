@@ -34,6 +34,7 @@ var BUSINESSES = {
 
 	]
 }
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
 	showLoadingIcon();
@@ -90,7 +91,7 @@ function start() {
 	return false;
 }
 
-$(document).on('pageinit', '#maps', function(){
+$(document).on('pageinit', '#maps', function() {
 	initialize();
 })
 
@@ -130,7 +131,8 @@ function createMarker(place) {
 	});
 
 	google.maps.event.addListener(marker, 'click', (function() {
-		var infowindow = new google.maps.InfoWindow({
+		infowindow.close();
+		infowindow.setOptions({
 			content: '<div id="content">' +
 				'<div id="siteNotice">' +
 				'</div>' +
