@@ -1,6 +1,7 @@
 var map = null; //makes map global
 var pos = null;
 var radius = 3200;
+var mapCenter = null;
 var business_markers = [];
 var BUSINESSES = {
 	"hotels": ["Hilton",
@@ -40,6 +41,7 @@ function initialize() {
 
 function createMap(p) {
 	pos = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+	mapCenter = pos;
 
 	var mapOptions = {
 		center: pos,
@@ -67,6 +69,11 @@ function createMap(p) {
 
 		radius = proximitymeter;
 	});
+	
+	google.maps.event.addListener(map, 'center_changed', function(event) {
+		console.log("center changed")
+		mapCenter = map.getCenter();
+	}
 
 	searchStores();
 }
@@ -140,7 +147,7 @@ function switchToCategory(category) {
 
 		console.log(radius);
 		var request = {
-			location: pos,
+			location: mapCenter,
 			radius: radius,
 			name: name
 		};
