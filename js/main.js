@@ -36,6 +36,7 @@ var BUSINESSES = {
 }
 
 function initialize() {
+	showLoadingIcon();
 	navigator.geolocation.getCurrentPosition(createMap);
 }
 
@@ -75,6 +76,8 @@ function createMap(p) {
 		console.log("center changed")
 		mapCenter = map.getCenter();
 	});
+
+	hideLoadingIcon();
 }
 
 /* starting script for intro page */
@@ -153,6 +156,7 @@ function switchToCategory(category) {
 
 	// add markers for new category
 	var list = BUSINESSES[category];
+	showLoadingIcon();
 	var done = _.after(list.length, hideLoadingIcon);
 	for (var i = 0; i < list.length; i++) {
 		var name = list[i];
@@ -190,8 +194,10 @@ $(document).ready(function onReady() {
 
 function hideLoadingIcon() {
 	console.log("hide loading icon");
+	$("#loading").hide();
 }
 
 function showLoadingIcon() {
 	console.log("show loading icon");
+	$("#loading").show(0);
 }
